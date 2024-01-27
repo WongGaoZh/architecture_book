@@ -30,17 +30,17 @@
           });
         }
       ],
-      markdown: {
-        renderer: {
-          code: function (code, lang) {
-            var html = '';
-            if (code.match(/^sequenceDiagram/) || code.match(/^graph/) || code.match(/^gantt/)) {
-              html = '<div class="mermaid">' + code + '</div>';
-            }
-            return html ;
-          }
-        }
-      },
+      // markdown: {
+      //   renderer: {
+      //     code: function (code, lang) {
+      //       var html = '';
+      //       if (code.match(/^sequenceDiagram/) || code.match(/^graph/) || code.match(/^gantt/)) {
+      //         html = '<div class="mermaid">' + code + '</div>';
+      //       }
+      //       return html ;
+      //     }
+      //   }
+      // },
 
       repo: 'https://github.com/WongGaoZh/Blog',
       auto2top: true,

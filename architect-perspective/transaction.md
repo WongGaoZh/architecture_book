@@ -2,21 +2,29 @@
 
 ## CAP理论(网上的我就不解释了.我用大白话解释一下自己的理解)
 
+``` text
 C : 一致性 : 在很短的时间里面,数据也要保证一致性,A改完后,B要在下个逻辑里面看到A改动的数据.
 A : 可用性 : 在很短的时间里面,数据保证可用性, A改完后,B在下个逻辑看不到A改动的数据,但是不影响最终的业务
-P : 分区容错性 : 有一个节点连接中断, 整个集群能依旧对外提供服务.
+P : 分区容错性 : 有一个节点连接中断, 整个集群能依旧对外提供服务
+```
 
 ## ACID理论
+``` text
 原子性（atomicity）：一个事务中的所有操作，不可分割，要么全部成功，要么全部失败；
 一致性（consistency）：一个事务执行前与执行后数据的完整性必须保持一致；
 隔离性（isolation）：一个事务的执行，不能被其他事务干扰，多并发时事务之间要相互隔离；
 持久性（durability）：一个事务一旦被提交，它对数据库中数据的改变是永久性的。
+```
+
 
 
 ## BASE理论
+
+``` text
 基本可用（Basically Available）：分布式系统在出现故障时，保证核心可用，允许损失部分可用性。（响应时间上的损失、功能上的损失）
 软状态（Soft State）：系统中的数据允许存在中间状态，中间状态不影响系统的整体可用性。（支付中、处理中等）
 最终一致性（Eventually Consistent）：系统中的数据不可一直处于软状态，必须在有时间期限，在期限过后应当保证数据的一致性。（支付中变为支付成功）
+```
 
 
 
@@ -25,12 +33,10 @@ P : 分区容错性 : 有一个节点连接中断, 整个集群能依旧对外�
 适用于 单体服务使用单个数据源的场景, 直接依赖于数据源本身提供的事务能力来工作的
 > 理论依据 : 在 20 世纪 90 年代，IBM Almaden 研究院总结了研发原型数据库系统“IBM System R”的经验，发表了 ARIES 理论中最主要的三篇论文，其中《ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging》着重解决了 ACID 的其中两个属性：原子性（A）和持久性（D）在算法层面上应当如何实现。而另一篇《ARIES/KVL: A Key-Value Locking Method for Concurrency Control of Multiaction Transactions Operating on B-Tree Indexes》则是现代数据库隔离性（I）奠基式的文章，下面，我们先从原子性和持久性说起。
 
-
-//todo
-这里可以访问我之前的文章 :mysql事务隔离级别[https://wonggaozh.github.io/Blog/#/zh-database/103_mysql%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB]  
+这里可以访问我之前的文章 :[mysql事务隔离级别](https://wonggaozh.github.io/Blog/#/zh-database/103_mysql%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB)
 
 这里简单的对这个文章进行一个总结 : 
-```agsl
+``` text
 实现原子性和持久性: 当一个记录用追加文件的形式先记录到磁盘里面,当日志记录安全落盘,才会表示当前事务已经完成持久化.
 
 问题 : 
@@ -46,9 +52,6 @@ P : 分区容错性 : 有一个节点连接中断, 整个集群能依旧对外�
 
 同时辅助于mvcc版本控制机制来解决重复读 
 行锁,间隙锁,next-lock锁来解决幻读问题.
-
-
-
 ```
 
 ## 全局事务 : 
