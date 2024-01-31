@@ -1,13 +1,14 @@
 <!-- docs/_sidebar.md -->
 * [**首页**](/)
-* [**架构师视角**](./architect-perspective/)
+* **架构师视角**
   * [**访问远程服务**](./architect-perspective/rpc.md)
   * [**事务处理-本地事务和全局事务**](./architect-perspective/transaction.md)
   * [**事务处理-分布式事务**](./architect-perspective/distributed_transaction.md)
   * [**透明多级分流系统**](./architect-perspective/diversion-system.md)
   * [**安全架构**](./architect-perspective/system-security.md)
+  * [**安全架构-数字证书**](./architect-perspective/transport-security.md)
     
-* [**分布式的基石**]()
+* **分布式的基石**
   * [**分布式共识算法**](./distribution/consensus.md)
   * [**从类库到服务**](./distribution/connect.md)
     * [**服务发现**](./distribution/service-discovery.md)
@@ -21,5 +22,4 @@
     * [**链路追踪**](./distribution/tracing.md)
     * [**聚合度量**](./distribution/metrics.md)
 
-
-* [**高可用**](/)
+  
